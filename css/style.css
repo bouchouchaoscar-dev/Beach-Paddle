@@ -3100,12 +3100,13 @@ h1, h2, h3, h4 {
   .section-tarifs { padding: var(--sp-16) 0; }
   .tarifs-grid { gap: var(--sp-4); }
   .tarifs-tables { gap: var(--sp-6); }
-  .tarifs-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .tarifs-table { width: 100%; min-width: 0; font-size: 0.8125rem; }
-  .tarifs-table thead th { padding: var(--sp-2) var(--sp-2); font-size: 0.625rem; }
-  .tarifs-table tbody td { padding: var(--sp-3) var(--sp-2); }
-  .tarifs-table tbody td:first-child { white-space: normal; }
-  .tarifs-table .price { font-size: 0.875rem; white-space: nowrap; }
+  .tarifs-table-wrap { overflow-x: visible; }
+  .tarifs-table { width: 100%; min-width: 0; font-size: 0.75rem; table-layout: fixed; }
+  .tarifs-table thead th { padding: var(--sp-2) var(--sp-1); font-size: 0.5625rem; letter-spacing: 0.06em; }
+  .tarifs-table thead th:first-child { width: 34%; }
+  .tarifs-table tbody td { padding: var(--sp-3) var(--sp-1); }
+  .tarifs-table tbody td:first-child { white-space: normal; font-size: 0.75rem; }
+  .tarifs-table .price { font-size: 0.8125rem; white-space: nowrap; }
   .tarifs-special { font-size: 0.8125rem; }
 
   /* HORAIRES */
