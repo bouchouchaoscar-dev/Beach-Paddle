@@ -3043,7 +3043,7 @@ h1, h2, h3, h4 {
     align-items: stretch;
     height: 100dvh;
     min-height: 100dvh;
-    padding-top: calc(var(--nav-h) + var(--sp-20));
+    padding-top: calc(var(--nav-h) + var(--sp-10));
     padding-bottom: 0;
   }
   .hero-content {
