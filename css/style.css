@@ -3081,7 +3081,7 @@ h1, h2, h3, h4 {
   /* Fix 3 — cacher le trait orange */
   .hero-tag::before { display: none; }
   .hero-scroll { display: none; }
-  .hero-media img { object-position: 7% 75%; }
+  .hero-media img { object-position: 7% 85%; }
 
   /* INTRO STRIP */
   .intro-strip-inner {
