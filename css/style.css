@@ -3039,6 +3039,7 @@ h1, h2, h3, h4 {
 
   /* HERO */
   .hero {
+    flex-direction: column;
     align-items: stretch;
     height: 100dvh;
     min-height: 100dvh;
@@ -3049,20 +3050,17 @@ h1, h2, h3, h4 {
     display: flex;
     flex-direction: column;
     padding-inline: var(--sp-5);
-    padding-bottom: 0;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
     flex: 1;
     margin-left: 0;
     margin-right: 0;
     max-width: 100%;
   }
   .hero-title { font-size: clamp(2.25rem, 8vw, 3.5rem); }
-  /* Fix 1 — boutons ancrés tout en bas */
+  /* Boutons poussés en bas via flexbox */
   .hero-actions {
-    position: absolute;
-    bottom: 0;
-    padding-bottom: max(16px, env(safe-area-inset-bottom));
-    left: var(--sp-5);
-    right: var(--sp-5);
+    position: static;
+    margin-top: auto;
     flex-direction: column;
     align-items: center;
     gap: var(--sp-3);
