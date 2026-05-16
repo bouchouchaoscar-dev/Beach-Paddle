@@ -3219,7 +3219,7 @@ h1, h2, h3, h4 {
    ============================================================ */
 @media (max-width: 480px) {
   .galerie-masonry { columns: 1; }
-  .hero-title { font-size: 2.125rem; }
+  .hero-title { font-size: 2.5rem; }
   .tarifs-block-title { font-size: 1rem; }
   .horaires-day { font-size: 0.875rem; }
   .horaires-time { font-size: 1rem; }
@@ -3409,7 +3409,7 @@ h1, h2, h3, h4 {
   .nav-logo img  { width: 42px; height: 42px; }
 
   /* Hero */
-  .hero-title { font-size: 1.875rem; }
+  .hero-title { font-size: 2.25rem; }
   .hero-tag   { font-size: 0.625rem; letter-spacing: 0.1em; }
 
   /* Réservations — numéro de téléphone */
