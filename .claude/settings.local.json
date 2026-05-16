@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"/Users/scar/Desktop/Site Beach Paddle \" -not -path \"*/Image Beach Paddle/*\" -not -name \".DS_Store\" | sort && echo \"---\" && wc -l \"/Users/scar/Desktop/Site Beach Paddle /index.html\" \"/Users/scar/Desktop/Site Beach Paddle /css/style.css\" \"/Users/scar/Desktop/Site Beach Paddle /js/main.js\")",
+      "Read(//Users/scar/Desktop/Site Beach Paddle /**)",
+      "Bash(open \"/Users/scar/Desktop/Site Beach Paddle /index.html\")",
+      "Bash(ls \"/Users/scar/Desktop/Site Beach Paddle /Image Beach Paddle/\" | grep -i resa)",
+      "Read(//Users/scar/Desktop/Site Beach Paddle /Image Beach Paddle/**)",
+      "Bash(python3 scrape_prospection.py)",
+      "Bash(grep -v \"^$\")",
+      "Bash(python3 scrape_v3.py)",
+      "Bash(python3 scrape_annuaires.py)",
+      "Bash(python3 scrape_final.py)",
+      "WebFetch(domain:playwright.dev)",
+      "Bash(pip3 show *)",
+      "Read(//Users/scar/Desktop/**)",
+      "Bash(npx @playwright/mcp@latest --help)",
+      "Read(//usr/local/bin/**)",
+      "Read(//opt/homebrew/bin/**)",
+      "Bash(python3 -c \"import playwright; print\\('playwright installed'\\)\")",
+      "Bash(brew --version)",
+      "Bash(pip3 install *)",
+      "Bash(python3 -m playwright install chromium)",
+      "Bash(mkdir -p ~/Desktop/scraping_beach_paddle)",
+      "Bash(python3 pipeline.py)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(python3 -c ' *)",
+      "Bash(kill 43845)",
+      "Bash(rm -f ~/Desktop/scraping_beach_paddle/pipeline_log.txt ~/Desktop/scraping_beach_paddle/erreurs_playwright.json ~/Desktop/scraping_beach_paddle/rna_records_*.json ~/Desktop/scraping_beach_paddle/step*.json ~/Desktop/scraping_beach_paddle/all_contacts*.json *)",
+      "Bash(PYTHONUNBUFFERED=1 python3 -u pipeline.py)",
+      "Bash(tee pipeline_log.txt)",
+      "Bash(python3 -)",
+      "Bash(awk '{print \"PID:\"$2, \"CPU:\"$3\"%\", \"Uptime:\"$10}')"
+    ],
+    "additionalDirectories": [
+      "/Users/scar/Desktop",
+      "/Users/scar/Desktop/scraping_beach_paddle"
+    ]
+  }
+}
