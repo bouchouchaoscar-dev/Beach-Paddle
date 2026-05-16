@@ -781,7 +781,7 @@ h1, h2, h3, h4 {
 .tarifs-block {
   background: var(--c-white);
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  overflow: visible;
   border: 1px solid var(--c-border);
 }
 
@@ -792,6 +792,7 @@ h1, h2, h3, h4 {
   padding: var(--sp-4) var(--sp-6);
   background: var(--c-surface);
   border-bottom: 1px solid var(--c-border);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .tarifs-block-icon {
