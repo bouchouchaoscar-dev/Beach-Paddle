@@ -3117,16 +3117,15 @@ h1, h2, h3, h4 {
   .horaires-time { font-size: 1.125rem; }
 
   /* RESERVATIONS */
-  .section-reservations { padding: 0; align-items: stretch; height: 100dvh; min-height: 100dvh; }
+  .section-reservations { padding: 0; align-items: stretch; min-height: 100dvh; height: auto; }
   .reservations-content {
     display: flex;
     flex-direction: column;
     padding-top: calc(var(--nav-h) + var(--sp-8));
-    padding-bottom: var(--sp-10);
+    padding-bottom: max(var(--sp-10), env(safe-area-inset-bottom));
     flex: 1;
-    height: 100%;
   }
-  .reservations-actions { margin-top: auto; padding-top: var(--sp-6); }
+  .reservations-actions { margin-top: var(--sp-6); padding-top: 0; }
   .reservations-intro-note::before { display: none; }
   .reservations-intro-note { display: block; }
   .reservations-phone {
