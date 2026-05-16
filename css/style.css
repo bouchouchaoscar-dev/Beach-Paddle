@@ -3306,7 +3306,7 @@ h1, h2, h3, h4 {
   .paddledog-content h2 { font-size: 1.625rem; }
 
   /* TARIFS */
-  .tarifs-table { min-width: 380px; font-size: 0.8125rem; }
+  .tarifs-table { min-width: 0; font-size: 0.75rem; table-layout: fixed; }
 
   /* CONTACT */
   .form-input, .form-textarea { font-size: 1rem; }
