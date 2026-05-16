@@ -3102,10 +3102,11 @@ h1, h2, h3, h4 {
   .tarifs-tables { gap: var(--sp-6); }
   .tarifs-table-wrap { overflow-x: visible; }
   .tarifs-table { width: 100%; min-width: 0; font-size: 0.75rem; table-layout: fixed; }
-  .tarifs-table thead th { padding: var(--sp-2) var(--sp-1); font-size: 0.5625rem; letter-spacing: 0.06em; }
-  .tarifs-table thead th:first-child { width: 34%; }
-  .tarifs-table tbody td { padding: var(--sp-3) var(--sp-1); }
-  .tarifs-table tbody td:first-child { white-space: normal; font-size: 0.75rem; }
+  .tarifs-table thead th { padding: var(--sp-2) var(--sp-1); font-size: 0.5625rem; letter-spacing: 0.06em; text-align: center; white-space: normal; }
+  .tarifs-table thead th:first-child { width: 34%; text-align: left; }
+  .tarifs-table tbody td { padding: var(--sp-3) var(--sp-1); text-align: center; }
+  .tarifs-table tbody td:first-child { white-space: normal; font-size: 0.75rem; text-align: left; }
+  .tarifs-table tbody td:not(:first-child) { text-align: center; }
   .tarifs-table .price { font-size: 0.8125rem; white-space: nowrap; }
   .tarifs-special { font-size: 0.8125rem; }
 
