@@ -3059,7 +3059,8 @@ h1, h2, h3, h4 {
   /* Fix 1 — boutons ancrés tout en bas */
   .hero-actions {
     position: absolute;
-    bottom: 12px;
+    bottom: 0;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
     left: var(--sp-5);
     right: var(--sp-5);
     flex-direction: column;
