@@ -963,9 +963,9 @@ h1, h2, h3, h4 {
 }
 
 .horaires-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
   padding: var(--sp-5) 0;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   gap: var(--sp-4);
@@ -3413,23 +3413,7 @@ h1, h2, h3, h4 {
   .footer-logo-text { font-size: 1.25rem; }
   .footer-logo img  { width: 44px; height: 44px; }
 
-  /* 8. Horaires mobile : horizontal, aligné en haut */
-  .horaires-row {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-  .horaires-day {
-    flex: 1;
-    white-space: normal;
-    line-height: 1.5;
-  }
-  .horaires-time {
-    flex-shrink: 0;
-    white-space: nowrap;
-    line-height: 1.5;
-    padding-top: 0;
-  }
+  /* 8. Horaires mobile : le grid 1fr/auto gère tout, rien à surcharger */
 
   /* 9. Hero : padding bas allégé */
   .hero { padding-bottom: var(--sp-16); }
