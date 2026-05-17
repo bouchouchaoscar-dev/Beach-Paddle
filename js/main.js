@@ -156,11 +156,10 @@
     });
   });
 
-  /* --- Contact form — Formsubmit.co native POST --- */
+  /* --- Contact form — Web3Forms AJAX --- */
   var contactForm = document.getElementById('contactForm');
 
   if (contactForm) {
-    /* Update hidden _subject field based on selected topic before submit */
     var subjectSelect = document.getElementById('contactSubject');
     var subjectField  = document.getElementById('formSubjectField');
     var subjectLabels = {
@@ -171,35 +170,55 @@
       tarifs:        'Tarifs & Formules',
       autre:         'Autre'
     };
+
     if (subjectSelect && subjectField) {
       subjectSelect.addEventListener('change', function () {
         subjectField.value = 'Contact Beach Paddle — ' + (subjectLabels[this.value] || this.value);
       });
     }
 
-    /* Show loading state while form submits */
-    contactForm.addEventListener('submit', function () {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
       var btn = contactForm.querySelector('[type="submit"]');
+      var originalTxt = btn.textContent;
+
       btn.textContent = 'Envoi en cours…';
       btn.disabled = true;
-    });
-  }
 
-  /* Show success banner if redirected back with ?merci=1 */
-  if (window.location.search.indexOf('merci=1') !== -1) {
-    var banner = document.createElement('div');
-    banner.setAttribute('role', 'alert');
-    banner.style.cssText = 'position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:9998;background:#2D5A27;color:#fff;padding:1rem 2rem;border-radius:12px;font-family:var(--font-sans);font-size:0.9375rem;font-weight:600;box-shadow:0 8px 32px rgba(0,0,0,0.2);text-align:center;max-width:90vw;';
-    banner.textContent = '✓ Votre message a bien été envoyé. Nous vous répondrons rapidement !';
-    document.body.appendChild(banner);
-    /* Scroll to contact section */
-    var contactSection = document.getElementById('contact');
-    if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
-    /* Remove banner and clean URL after 5s */
-    setTimeout(function () {
-      banner.remove();
-      history.replaceState(null, '', window.location.pathname);
-    }, 5000);
+      var data = new FormData(contactForm);
+      var payload = {};
+      data.forEach(function (val, key) { payload[key] = val; });
+
+      fetch('https://api.web3forms.com/submit', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body:    JSON.stringify(payload)
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (json) {
+        if (json.success) {
+          btn.textContent = '✓ Message envoyé !';
+          btn.style.background = '#2D5A27';
+          contactForm.reset();
+          setTimeout(function () {
+            btn.textContent = originalTxt;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 4000);
+        } else {
+          throw new Error(json.message);
+        }
+      })
+      .catch(function () {
+        btn.textContent = 'Erreur — réessayez';
+        btn.style.background = '#c0392b';
+        btn.disabled = false;
+        setTimeout(function () {
+          btn.textContent = originalTxt;
+          btn.style.background = '';
+        }, 4000);
+      });
+    });
   }
 
   /* --- Nav dropdown --- */
