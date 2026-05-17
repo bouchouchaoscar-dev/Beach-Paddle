@@ -1437,7 +1437,7 @@ h1, h2, h3, h4 {
 
 .groupe-card-desc {
   font-size: 0.9375rem;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.92);
   line-height: 1.65;
 }
 
@@ -1454,7 +1454,7 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: var(--sp-3);
   font-size: 0.875rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.92);
 }
 
 .groupe-card-features li::before {
