@@ -1080,7 +1080,7 @@ h1, h2, h3, h4 {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: rgba(26, 33, 22, 0.76);
+  background: rgba(26, 33, 22, 0.58);
 }
 
 .reservations-content {
