@@ -3274,7 +3274,7 @@ h1, h2, h3, h4 {
   .hero-title { font-size: 2.875rem; }
   .tarifs-block-title { font-size: 1rem; }
   .horaires-day { font-size: 0.875rem; }
-  .horaires-time { font-size: 0.9375rem; }
+  .horaires-time { font-size: 0.875rem; }
   .nav-logo-text { font-size: 1.35rem; }
 }
 
@@ -3418,6 +3418,10 @@ h1, h2, h3, h4 {
     flex: 1;
     white-space: normal;
     line-height: 1.4;
+  }
+  .horaires-time {
+    line-height: 1.4;
+    flex-shrink: 0;
   }
   .horaires-row { align-items: center; }
 
