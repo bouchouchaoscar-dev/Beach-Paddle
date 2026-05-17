@@ -3245,7 +3245,7 @@ h1, h2, h3, h4 {
   .tarifs-block-title { font-size: 1rem; }
   .horaires-day { font-size: 0.875rem; }
   .horaires-time { font-size: 1rem; }
-  .nav-logo-text { font-size: 1rem; }
+  .nav-logo-text { font-size: 1.35rem; }
 }
 
 /* ============================================================
@@ -3427,7 +3427,7 @@ h1, h2, h3, h4 {
 @media (max-width: 390px) {
 
   /* Nav logo compact */
-  .nav-logo-text { font-size: 1.15rem; }
+  .nav-logo-text { font-size: 1.3rem; }
   .nav-logo img  { width: 42px; height: 42px; }
 
   /* Hero */
