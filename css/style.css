@@ -833,6 +833,7 @@ h1, h2, h3, h4 {
   width: 100%;
   min-width: 460px;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .tarifs-table thead tr {
@@ -853,6 +854,7 @@ h1, h2, h3, h4 {
 
 .tarifs-table thead th:first-child {
   text-align: left;
+  width: 40%;
 }
 
 .tarifs-table tbody tr {
