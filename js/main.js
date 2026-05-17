@@ -351,8 +351,18 @@
       fsBars[fsCurrent].classList.add('is-active');
     }
 
-    fsSlider.querySelector('.fitness-arrow-prev').addEventListener('click', function () { fsGoTo(fsCurrent - 1); });
-    fsSlider.querySelector('.fitness-arrow-next').addEventListener('click', function () { fsGoTo(fsCurrent + 1); });
+    fsSlider.querySelector('.fitness-arrow-prev').addEventListener('click', function () { fsGoTo(fsCurrent - 1); this.blur(); });
+    fsSlider.querySelector('.fitness-arrow-next').addEventListener('click', function () { fsGoTo(fsCurrent + 1); this.blur(); });
+
+    var fitnessSection = document.getElementById('fitness');
+    if (fitnessSection && 'IntersectionObserver' in window) {
+      var fsObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) { fsGoTo(0); }
+        });
+      }, { threshold: 0.25 });
+      fsObserver.observe(fitnessSection);
+    }
   }
 
   /* --- Video facade: charge l'iframe YouTube au clic --- */

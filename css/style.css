@@ -1935,9 +1935,21 @@ h1, h2, h3, h4 {
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.fitness-arrow:hover {
+@media (hover: hover) {
+  .fitness-arrow:hover {
+    background: var(--c-green);
+    color: #fff;
+  }
+}
+.fitness-arrow:active {
   background: var(--c-green);
   color: #fff;
+  transition: background 0.05s ease, color 0.05s ease;
+}
+.fitness-arrow:focus:not(:focus-visible) {
+  outline: none;
+  background: transparent;
+  color: var(--c-green);
 }
 
 .fitness-arrow svg {
