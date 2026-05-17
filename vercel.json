@@ -1,5 +1,37 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/reservations-beach-paddle-paris-marne-region-parisienne",
+      "destination": "/#reservations",
+      "permanent": true
+    },
+    {
+      "source": "/reservations-beach-paddle-paris-marne-region-parisienne/",
+      "destination": "/#reservations",
+      "permanent": true
+    },
+    {
+      "source": "/videos-stand-up-paddle-marne-paris",
+      "destination": "/#videos",
+      "permanent": true
+    },
+    {
+      "source": "/videos-stand-up-paddle-marne-paris/",
+      "destination": "/#videos",
+      "permanent": true
+    },
+    {
+      "source": "/la-presse-parle-de-beach-paddle",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/la-presse-parle-de-beach-paddle/",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

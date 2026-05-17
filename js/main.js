@@ -182,6 +182,11 @@
       var btn = contactForm.querySelector('[type="submit"]');
       var originalTxt = btn.textContent;
 
+      if (subjectSelect && !subjectSelect.value) {
+        subjectSelect.focus();
+        return;
+      }
+
       btn.textContent = 'Envoi en cours…';
       btn.disabled = true;
 
