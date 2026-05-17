@@ -358,3 +358,67 @@
     }
   }
 })();
+
+/* ============================================================
+   COOKIE CONSENT + GOOGLE MAPS
+   ============================================================ */
+(function () {
+  var MAPS_SRC = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d655.4!2d2.4954!3d48.8023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ4JzA4LjMiTiAywrAyOSc0My41IkU!5e0!3m2!1sfr!2sfr!4v1716000000000!5m2!1sfr!2sfr&q=Beach+Paddle+18+Quai+du+Mesnil+Saint-Maur-des-Fossés&z=16';
+  var MAPS_URL = 'https://maps.google.com/?q=18+Quai+du+Mesnil+Saint-Maur-des-Fossés';
+  var KEY = 'bp_consent';
+  var mapWrapper = document.getElementById('mapWrapper');
+  var banner     = document.getElementById('cookieBanner');
+
+  function loadMap() {
+    if (!mapWrapper) return;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://maps.google.com/maps?q=Beach+Paddle+18+Quai+du+Mesnil+Saint-Maur-des-Fossés&output=embed&z=16';
+    iframe.allowFullscreen = true;
+    iframe.loading = 'lazy';
+    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+    iframe.title = 'Localisation Beach Paddle sur Google Maps';
+    iframe.setAttribute('aria-label', 'Carte Google Maps — Beach Paddle, Saint-Maur-des-Fossés');
+    mapWrapper.innerHTML = '';
+    mapWrapper.appendChild(iframe);
+  }
+
+  function showPlaceholder(withLoadBtn) {
+    if (!mapWrapper) return;
+    var html = '<div class="map-placeholder">'
+      + '<svg class="map-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>'
+      + '<p>La carte est désactivée.<br>Vous avez refusé les cookies Google.</p>'
+      + '<div class="map-placeholder-actions">'
+      + (withLoadBtn ? '<button class="map-load-btn" id="mapLoadBtn">Charger la carte</button>' : '')
+      + '<a href="' + MAPS_URL + '" target="_blank" rel="noopener" class="map-ext-link">Voir sur Google Maps</a>'
+      + '</div>'
+      + '</div>';
+    mapWrapper.innerHTML = html;
+    if (withLoadBtn) {
+      document.getElementById('mapLoadBtn').addEventListener('click', function () {
+        loadMap();
+      });
+    }
+  }
+
+  function applyConsent(value, save) {
+    if (save) localStorage.setItem(KEY, value);
+    if (banner) banner.hidden = true;
+    if (value === 'accepted') {
+      loadMap();
+    } else {
+      showPlaceholder(true);
+    }
+  }
+
+  var stored = localStorage.getItem(KEY);
+  if (stored) {
+    applyConsent(stored, false);
+  } else {
+    showPlaceholder(false);
+    if (banner) {
+      banner.hidden = false;
+      document.getElementById('cookieAccept').addEventListener('click', function () { applyConsent('accepted', true); });
+      document.getElementById('cookieRefuse').addEventListener('click', function () { applyConsent('refused',  true); });
+    }
+  }
+})();

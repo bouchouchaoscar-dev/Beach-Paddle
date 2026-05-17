@@ -1821,16 +1821,7 @@
 
             </div>
 
-            <div class="contact-map reveal reveal-delay-3">
-              <iframe
-                src="https://maps.google.com/maps?q=Beach+Paddle+18+Quai+du+Mesnil+Saint-Maur-des-Fossés&output=embed&z=16"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                title="Localisation Beach Paddle sur Google Maps"
-                aria-label="Carte Google Maps — Beach Paddle, Saint-Maur-des-Fossés"
-              ></iframe>
-            </div>
+            <div class="contact-map reveal reveal-delay-3" id="mapWrapper"></div>
           </div>
 
           <div class="reveal reveal-delay-2">
@@ -1979,6 +1970,20 @@
       </div>
     </div>
   </footer>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Consentement cookies" hidden>
+    <div class="cookie-banner-inner">
+      <p class="cookie-banner-text">
+        Ce site intègre <strong>Google Maps</strong> qui peut déposer des cookies. Aucun cookie publicitaire ni de suivi.
+        <a href="/politique-confidentialite" class="cookie-banner-link">En savoir plus</a>
+      </p>
+      <div class="cookie-banner-actions">
+        <button class="cookie-btn cookie-btn-refuse" id="cookieRefuse">Refuser</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accepter</button>
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
