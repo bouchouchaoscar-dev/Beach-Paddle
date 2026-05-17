@@ -3413,17 +3413,19 @@ h1, h2, h3, h4 {
   .footer-logo-text { font-size: 1.25rem; }
   .footer-logo img  { width: 44px; height: 44px; }
 
-  /* 8. Horaires : jour sur plusieurs lignes si texte long */
+  /* 8. Horaires : empilement vertical sur mobile */
+  .horaires-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-1);
+  }
   .horaires-day {
-    flex: 1;
     white-space: normal;
     line-height: 1.4;
   }
   .horaires-time {
     line-height: 1.4;
-    flex-shrink: 0;
   }
-  .horaires-row { align-items: center; }
 
   /* 9. Hero : padding bas allégé */
   .hero { padding-bottom: var(--sp-16); }
