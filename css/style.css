@@ -3074,9 +3074,9 @@ h1, h2, h3, h4 {
   .hero-overlay {
     background: linear-gradient(
       to bottom,
-      rgba(26,33,22,0.75) 0%,
-      rgba(26,33,22,0.54) 45%,
-      rgba(26,33,22,0.79) 100%
+      rgba(26,33,22,0.70) 0%,
+      rgba(26,33,22,0.49) 45%,
+      rgba(26,33,22,0.74) 100%
     );
   }
   /* Fix 3 — cacher le trait orange */
