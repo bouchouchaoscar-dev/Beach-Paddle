@@ -245,16 +245,6 @@
     });
   });
 
-  /* --- Paddle Dog slider : swap slides 1 & 2 on mobile --- */
-  (function () {
-    if (window.innerWidth >= 768) return;
-    var slides = document.querySelectorAll('#paddledogSlider .paddledog-slide');
-    var dots   = document.querySelectorAll('#paddledogSlider .paddledog-dot');
-    if (slides.length < 2) return;
-    slides[0].parentNode.insertBefore(slides[1], slides[0]);
-    if (dots.length >= 2) dots[0].parentNode.insertBefore(dots[1], dots[0]);
-  })();
-
   /* --- Paddle Dog slider --- */
   var pdSlider = document.getElementById('paddledogSlider');
   if (pdSlider) {
