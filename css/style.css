@@ -1720,9 +1720,20 @@ h1, h2, h3, h4 {
   z-index: 2;
 }
 
-.paddledog-arrow:hover {
+@media (hover: hover) {
+  .paddledog-arrow:hover {
+    background: rgba(196,149,106,0.7);
+    transform: translateY(-50%) scale(1.08);
+  }
+}
+.paddledog-arrow:active {
   background: rgba(196,149,106,0.7);
-  transform: translateY(-50%) scale(1.08);
+  transform: translateY(-50%) scale(1.03);
+  transition: background 0.05s ease, transform 0.05s ease;
+}
+.paddledog-arrow:focus:not(:focus-visible) {
+  outline: none;
+  background: rgba(26,33,22,0.75);
 }
 
 .paddledog-arrow svg {

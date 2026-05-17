@@ -304,8 +304,8 @@
       pdDots[pdCurrent].classList.add('is-active');
     }
 
-    pdSlider.querySelector('.paddledog-arrow-prev').addEventListener('click', function () { pdGoTo(pdCurrent - 1); });
-    pdSlider.querySelector('.paddledog-arrow-next').addEventListener('click', function () { pdGoTo(pdCurrent + 1); });
+    pdSlider.querySelector('.paddledog-arrow-prev').addEventListener('click', function () { pdGoTo(pdCurrent - 1); this.blur(); });
+    pdSlider.querySelector('.paddledog-arrow-next').addEventListener('click', function () { pdGoTo(pdCurrent + 1); this.blur(); });
     pdDots.forEach(function (dot, i) {
       dot.addEventListener('click', function () { pdGoTo(i); });
     });
