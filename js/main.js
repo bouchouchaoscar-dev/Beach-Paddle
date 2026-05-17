@@ -267,13 +267,29 @@
     });
 
     var pdTouchStartX = 0;
+    var pdTouchStartY = 0;
     pdSlider.addEventListener('touchstart', function (e) {
       pdTouchStartX = e.touches[0].clientX;
+      pdTouchStartY = e.touches[0].clientY;
     }, { passive: true });
     pdSlider.addEventListener('touchend', function (e) {
       var dx = e.changedTouches[0].clientX - pdTouchStartX;
-      if (Math.abs(dx) > 40) pdGoTo(pdCurrent + (dx < 0 ? 1 : -1));
+      var dy = e.changedTouches[0].clientY - pdTouchStartY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        pdGoTo(pdCurrent + (dx < 0 ? 1 : -1));
+      }
     }, { passive: true });
+
+    /* Reset to slide 1 each time the section enters view */
+    var pdSection = document.getElementById('paddle-dog');
+    if (pdSection && 'IntersectionObserver' in window) {
+      var pdSectionObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { pdGoTo(0); }
+        });
+      }, { threshold: 0.1 });
+      pdSectionObserver.observe(pdSection);
+    }
   }
 
   /* --- Fitness slider --- */
