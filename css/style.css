@@ -3081,6 +3081,8 @@ h1, h2, h3, h4 {
     gap: var(--sp-3);
   }
   .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-actions .btn-ghost   { order: -1; }
+  .hero-actions .btn-primary { order:  0; }
   /* Fix 2 — légère opacité au milieu */
   .hero-overlay {
     background: linear-gradient(
