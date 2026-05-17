@@ -965,7 +965,7 @@ h1, h2, h3, h4 {
 .horaires-row {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   padding: var(--sp-5) 0;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   gap: var(--sp-4);
@@ -3419,7 +3419,7 @@ h1, h2, h3, h4 {
     white-space: normal;
     line-height: 1.4;
   }
-  .horaires-row { align-items: flex-start; }
+  .horaires-row { align-items: center; }
 
   /* 9. Hero : padding bas allégé */
   .hero { padding-bottom: var(--sp-16); }
