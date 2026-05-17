@@ -753,6 +753,13 @@ h1, h2, h3, h4 {
   border-left: 2px solid var(--c-green);
   border-radius: 0 var(--radius) var(--radius) 0;
 }
+.tarifs-payment-note {
+  font-size: 0.8125rem;
+  color: var(--c-muted);
+  margin-top: var(--sp-3);
+  padding: 0 var(--sp-1);
+  font-style: italic;
+}
 
 .tarifs-contrat {
   margin-top: var(--sp-3);
