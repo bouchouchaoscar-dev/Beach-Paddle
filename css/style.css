@@ -1253,6 +1253,7 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: 0.5rem;
   align-self: flex-start;
+  margin-top: var(--sp-5);
   font-family: var(--font-sans);
   font-size: 0.8125rem;
   font-weight: 600;
