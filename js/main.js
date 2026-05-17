@@ -156,66 +156,50 @@
     });
   });
 
-  /* --- Contact form submit — Formsubmit.co --- */
-  const contactForm = document.getElementById('contactForm');
+  /* --- Contact form — Formsubmit.co native POST --- */
+  var contactForm = document.getElementById('contactForm');
 
   if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
+    /* Update hidden _subject field based on selected topic before submit */
+    var subjectSelect = document.getElementById('contactSubject');
+    var subjectField  = document.getElementById('formSubjectField');
+    var subjectLabels = {
+      renseignement: 'Renseignement général',
+      reservation:   'Réservation de groupe',
+      'paddle-dog':  'Beach Paddle Dog',
+      fitness:       'Cours de Fitness',
+      tarifs:        'Tarifs & Formules',
+      autre:         'Autre'
+    };
+    if (subjectSelect && subjectField) {
+      subjectSelect.addEventListener('change', function () {
+        subjectField.value = 'Contact Beach Paddle — ' + (subjectLabels[this.value] || this.value);
+      });
+    }
 
-      const btn         = contactForm.querySelector('[type="submit"]');
-      const originalTxt = btn.textContent;
-      const formData    = new FormData(contactForm);
-
-      /* Map subject select value to human-readable label */
-      const subjectLabels = {
-        renseignement: 'Renseignement général',
-        reservation:   'Réservation de groupe',
-        'paddle-dog':  'Beach Paddle Dog',
-        fitness:       'Cours de Fitness',
-        tarifs:        'Tarifs & Formules',
-        autre:         'Autre'
-      };
-      const subjectVal = formData.get('subject');
-      formData.set('_subject', 'Contact Beach Paddle — ' + (subjectLabels[subjectVal] || subjectVal));
-
-      /* Convert to plain object for JSON submission (required by Formsubmit AJAX) */
-      const payload = {};
-      formData.forEach(function(value, key) { payload[key] = value; });
-
+    /* Show loading state while form submits */
+    contactForm.addEventListener('submit', function () {
+      var btn = contactForm.querySelector('[type="submit"]');
       btn.textContent = 'Envoi en cours…';
       btn.disabled = true;
-
-      fetch('https://formsubmit.co/ajax/contact@beachpaddle.fr', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body:    JSON.stringify(payload)
-      })
-      .then(function (res) { return res.json(); })
-      .then(function (json) {
-        if (json.success === 'true' || json.success === true) {
-          btn.textContent = '✓ Message envoyé !';
-          btn.style.background = '#2D5A27';
-          contactForm.reset();
-          setTimeout(function () {
-            btn.textContent = originalTxt;
-            btn.style.background = '';
-            btn.disabled = false;
-          }, 4000);
-        } else {
-          throw new Error('Formsubmit error');
-        }
-      })
-      .catch(function () {
-        btn.textContent = 'Erreur — réessayez';
-        btn.style.background = '#c0392b';
-        btn.disabled = false;
-        setTimeout(function () {
-          btn.textContent = originalTxt;
-          btn.style.background = '';
-        }, 4000);
-      });
     });
+  }
+
+  /* Show success banner if redirected back with ?merci=1 */
+  if (window.location.search.indexOf('merci=1') !== -1) {
+    var banner = document.createElement('div');
+    banner.setAttribute('role', 'alert');
+    banner.style.cssText = 'position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:9998;background:#2D5A27;color:#fff;padding:1rem 2rem;border-radius:12px;font-family:var(--font-sans);font-size:0.9375rem;font-weight:600;box-shadow:0 8px 32px rgba(0,0,0,0.2);text-align:center;max-width:90vw;';
+    banner.textContent = '✓ Votre message a bien été envoyé. Nous vous répondrons rapidement !';
+    document.body.appendChild(banner);
+    /* Scroll to contact section */
+    var contactSection = document.getElementById('contact');
+    if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+    /* Remove banner and clean URL after 5s */
+    setTimeout(function () {
+      banner.remove();
+      history.replaceState(null, '', window.location.pathname);
+    }, 5000);
   }
 
   /* --- Nav dropdown --- */
