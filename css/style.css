@@ -983,11 +983,11 @@ h1, h2, h3, h4 {
 }
 
 .horaires-time {
-  font-family: var(--font-serif);
-  font-size: 1.375rem;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
   color: #fff;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
