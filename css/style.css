@@ -3150,8 +3150,10 @@ h1, h2, h3, h4 {
   .reservations-content { padding-inline: var(--sp-5); }
   .reservations-actions { flex-direction: column; }
   .reservations-actions .btn { width: 100%; justify-content: center; }
-  .reservations-actions .btn-primary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.35); }
-  .reservations-actions .btn-primary:hover { background: rgba(255,255,255,0.22); }
+  .reservations-actions .btn-primary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.4); }
+  .reservations-actions .btn-primary:hover { background: rgba(255,255,255,0.1); }
+  .reservations-actions .btn-ghost { background: rgba(217,138,69,0.30); color: #fff; border: 1px solid rgba(217,138,69,0.5); }
+  .reservations-actions .btn-ghost:hover { background: rgba(217,138,69,0.45); }
 
   /* LA BASE */
   .base-media { min-height: 300px; }
