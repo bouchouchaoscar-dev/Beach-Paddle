@@ -848,7 +848,7 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
   color: var(--c-muted);
   padding: var(--sp-3) var(--sp-6);
-  text-align: right;
+  text-align: center;
   white-space: nowrap;
 }
 
@@ -878,7 +878,7 @@ h1, h2, h3, h4 {
 }
 
 .tarifs-table tbody td:not(:first-child) {
-  text-align: right;
+  text-align: center;
   font-variant-numeric: tabular-nums;
   color: var(--c-muted);
 }
