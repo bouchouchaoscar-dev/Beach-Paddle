@@ -156,29 +156,61 @@
     });
   });
 
-  /* --- Contact form submit (no backend — visual feedback only) --- */
+  /* --- Contact form submit — Formsubmit.co --- */
   const contactForm = document.getElementById('contactForm');
 
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      const btn = contactForm.querySelector('[type="submit"]');
-      const originalText = btn.textContent;
+
+      const btn         = contactForm.querySelector('[type="submit"]');
+      const originalTxt = btn.textContent;
+      const data        = new FormData(contactForm);
+
+      /* Map subject select value to human-readable label */
+      const subjectLabels = {
+        renseignement: 'Renseignement général',
+        reservation:   'Réservation de groupe',
+        'paddle-dog':  'Beach Paddle Dog',
+        fitness:       'Cours de Fitness',
+        tarifs:        'Tarifs & Formules',
+        autre:         'Autre'
+      };
+      const subjectVal = data.get('subject');
+      data.set('_subject', 'Contact Beach Paddle — ' + (subjectLabels[subjectVal] || subjectVal));
 
       btn.textContent = 'Envoi en cours…';
       btn.disabled = true;
 
-      setTimeout(function () {
-        btn.textContent = 'Message envoyé !';
-        btn.style.background = '#2D5A27';
-        contactForm.reset();
-
+      fetch('https://formsubmit.co/ajax/contact@beachpaddle.fr', {
+        method:  'POST',
+        headers: { 'Accept': 'application/json' },
+        body:    data
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (json) {
+        if (json.success === 'true' || json.success === true) {
+          btn.textContent = '✓ Message envoyé !';
+          btn.style.background = '#2D5A27';
+          contactForm.reset();
+          setTimeout(function () {
+            btn.textContent = originalTxt;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 4000);
+        } else {
+          throw new Error('Formsubmit error');
+        }
+      })
+      .catch(function () {
+        btn.textContent = 'Erreur — réessayez';
+        btn.style.background = '#c0392b';
+        btn.disabled = false;
         setTimeout(function () {
-          btn.textContent = originalText;
+          btn.textContent = originalTxt;
           btn.style.background = '';
-          btn.disabled = false;
-        }, 3500);
-      }, 1200);
+        }, 4000);
+      });
     });
   }
 
