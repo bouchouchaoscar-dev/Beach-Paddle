@@ -1157,6 +1157,14 @@ h1, h2, h3, h4 {
   flex-wrap: wrap;
   margin-bottom: var(--sp-6);
 }
+.reservations-actions .btn.btn-ghost {
+  background: rgba(217,138,69,0.22);
+  border-color: rgba(217,138,69,0.5);
+}
+.reservations-actions .btn.btn-ghost:hover {
+  background: rgba(217,138,69,0.38);
+  border-color: rgba(217,138,69,0.75);
+}
 
 .reservations-note {
   font-size: 0.8125rem;
