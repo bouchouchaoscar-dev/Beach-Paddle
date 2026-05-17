@@ -165,7 +165,7 @@
 
       const btn         = contactForm.querySelector('[type="submit"]');
       const originalTxt = btn.textContent;
-      const data        = new FormData(contactForm);
+      const formData    = new FormData(contactForm);
 
       /* Map subject select value to human-readable label */
       const subjectLabels = {
@@ -176,16 +176,20 @@
         tarifs:        'Tarifs & Formules',
         autre:         'Autre'
       };
-      const subjectVal = data.get('subject');
-      data.set('_subject', 'Contact Beach Paddle — ' + (subjectLabels[subjectVal] || subjectVal));
+      const subjectVal = formData.get('subject');
+      formData.set('_subject', 'Contact Beach Paddle — ' + (subjectLabels[subjectVal] || subjectVal));
+
+      /* Convert to plain object for JSON submission (required by Formsubmit AJAX) */
+      const payload = {};
+      formData.forEach(function(value, key) { payload[key] = value; });
 
       btn.textContent = 'Envoi en cours…';
       btn.disabled = true;
 
       fetch('https://formsubmit.co/ajax/contact@beachpaddle.fr', {
         method:  'POST',
-        headers: { 'Accept': 'application/json' },
-        body:    data
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body:    JSON.stringify(payload)
       })
       .then(function (res) { return res.json(); })
       .then(function (json) {
