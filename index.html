@@ -44,7 +44,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Pacifico&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -53,12 +53,12 @@
     "@type": ["LocalBusiness", "SportsActivityLocation"],
     "name": "Beach Paddle",
     "description": "Location de Stand Up Paddle et Canoë-Kayak sur la Marne à Saint-Maur-des-Fossés. Activités nautiques pour tous niveaux à 20 min de Paris.",
-    "url": "https://www.beachpaddle.fr",
+    "url": "https://www.beachpaddle.fr/",
     "telephone": "+33782924179",
     "email": "contact@beachpaddle.fr",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "18 Quai du Mesnil / Rue Sainte-Catherine",
+      "streetAddress": "18 Quai du Mesnil",
       "addressLocality": "Saint-Maur-des-Fossés",
       "postalCode": "94100",
       "addressRegion": "Val-de-Marne",
@@ -66,28 +66,58 @@
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 48.7978,
-      "longitude": 2.5047
+      "latitude": 48.79780,
+      "longitude": 2.50470
     },
-    "hasMap": "https://maps.google.com/?q=18+Quai+du+Mesnil+Saint-Maur-des-Fossés",
+    "hasMap": "https://maps.google.com/?q=18+Quai+du+Mesnil+Saint-Maur-des-Foss%C3%A9s",
     "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Wednesday"],
+        "opens": "14:00",
+        "closes": "19:00",
+        "validFrom": "2026-03-01",
+        "validThrough": "2026-05-31"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday","Sunday","PublicHolidays"],
+        "opens": "11:00",
+        "closes": "19:00",
+        "validFrom": "2026-03-01",
+        "validThrough": "2026-05-31"
+      },
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
         "opens": "14:00",
-        "closes": "19:00"
+        "closes": "19:00",
+        "validFrom": "2026-06-01",
+        "validThrough": "2026-08-31"
       },
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
+        "dayOfWeek": ["Saturday","Sunday","PublicHolidays"],
         "opens": "11:00",
-        "closes": "19:00"
+        "closes": "19:00",
+        "validFrom": "2026-06-01",
+        "validThrough": "2026-08-31"
       },
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Sunday",
-        "opens": "10:00",
-        "closes": "19:00"
+        "dayOfWeek": ["Wednesday"],
+        "opens": "14:00",
+        "closes": "19:00",
+        "validFrom": "2026-09-01",
+        "validThrough": "2026-10-31"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday","Sunday","PublicHolidays"],
+        "opens": "11:00",
+        "closes": "19:00",
+        "validFrom": "2026-09-01",
+        "validThrough": "2026-10-31"
       }
     ],
     "priceRange": "€€",
@@ -99,6 +129,56 @@
     "sameAs": [
       "https://www.facebook.com/beachpaddle",
       "https://www.instagram.com/beachpaddle"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Beach Paddle",
+    "url": "https://www.beachpaddle.fr/",
+    "inLanguage": "fr-FR",
+    "description": "Location de Stand Up Paddle et Canoë-Kayak sur la Marne à Saint-Maur-des-Fossés, à 20 min de Paris."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Location de Stand Up Paddle sur la Marne",
+    "serviceType": "Location de Stand Up Paddle",
+    "description": "Location de planches de Stand Up Paddle 1, 2 ou 3 personnes sur la Marne à Saint-Maur-des-Fossés. Dès 10 € pour 30 minutes.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Beach Paddle",
+      "url": "https://www.beachpaddle.fr/"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Saint-Maur-des-Fossés"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Paddle simple — 30 min",
+        "priceCurrency": "EUR",
+        "price": "10"
+      },
+      {
+        "@type": "Offer",
+        "name": "Paddle simple — 1h",
+        "priceCurrency": "EUR",
+        "price": "17"
+      },
+      {
+        "@type": "Offer",
+        "name": "Kayak double — 1h",
+        "priceCurrency": "EUR",
+        "price": "27"
+      }
     ]
   }
   </script>
@@ -1158,8 +1238,8 @@
               loading="lazy"
             >
           </div>
-          <div class="galerie-item" role="button" tabindex="0" aria-label="Agrandir : photo Beach Paddle">
-            <img src="Image Beach Paddle/LAST 1.jpg" alt="Beach Paddle — activité sur la Marne" loading="lazy">
+          <div class="galerie-item" role="button" tabindex="0" aria-label="Agrandir : session paddle sur la Marne">
+            <img src="Image Beach Paddle/LAST 1.jpg" alt="Session stand up paddle sur la Marne à Saint-Maur-des-Fossés" loading="lazy">
           </div>
 
           <div class="galerie-item" role="button" tabindex="0" aria-label="Agrandir : session kayak">
@@ -1265,8 +1345,8 @@
               loading="lazy"
             >
           </div>
-          <div class="galerie-item" role="button" tabindex="0" aria-label="Agrandir : photo Beach Paddle">
-            <img src="Image Beach Paddle/LAST 2.jpg" alt="Beach Paddle — activité sur la Marne" loading="lazy">
+          <div class="galerie-item" role="button" tabindex="0" aria-label="Agrandir : paddle en groupe sur la Marne">
+            <img src="Image Beach Paddle/LAST 2.jpg" alt="Groupe de paddlers sur la Marne à Saint-Maur-des-Fossés" loading="lazy">
           </div>
 
           <div class="galerie-item" role="button" tabindex="0" aria-label="Agrandir : photo 3">
@@ -1333,8 +1413,8 @@
           <div class="galerie-item" role="button" tabindex="0" aria-label="Agrandir : photo galerie">
             <img src="Image Beach Paddle/Rajouter 6.JPG" alt="Ambiance estivale à la base Beach Paddle" loading="lazy">
           </div>
-          <div class="galerie-item" role="button" tabindex="0" aria-label="Agrandir : photo Beach Paddle">
-            <img src="Image Beach Paddle/LAST 3.jpg" alt="Beach Paddle — activité sur la Marne" loading="lazy">
+          <div class="galerie-item" role="button" tabindex="0" aria-label="Agrandir : location paddle Marne">
+            <img src="Image Beach Paddle/LAST 3.jpg" alt="Location de paddle sur la Marne — base Beach Paddle" loading="lazy">
           </div>
 
           <div class="galerie-item" role="button" tabindex="0" aria-label="Agrandir : photo galerie">

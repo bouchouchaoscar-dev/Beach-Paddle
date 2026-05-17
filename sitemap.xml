@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Page principale -->
+  <!-- Pages indexables -->
   <url>
     <loc>https://www.beachpaddle.fr/</loc>
     <lastmod>2026-05-17</lastmod>
@@ -9,7 +9,21 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Sections profondes (ancres) -->
+  <url>
+    <loc>https://www.beachpaddle.fr/mentions-legales</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>https://www.beachpaddle.fr/politique-confidentialite</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <!-- Sections principales (ancres) -->
   <url>
     <loc>https://www.beachpaddle.fr/#tarifs</loc>
     <lastmod>2026-05-17</lastmod>
@@ -71,13 +85,6 @@
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.beachpaddle.fr/#videos</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
   </url>
 
   <url>
