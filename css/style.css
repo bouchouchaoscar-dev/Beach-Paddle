@@ -2206,15 +2206,12 @@ h1, h2, h3, h4 {
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  aspect-ratio: 3/4;
 }
 
 .galerie-item img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
-  object-fit: cover;
-  object-position: center;
   transition: transform 0.5s var(--ease-out), filter 0.5s;
 }
 
