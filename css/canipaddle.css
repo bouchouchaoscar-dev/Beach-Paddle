@@ -1,0 +1,619 @@
+/* ============================================================
+   CANIPADDLE 2026 — CSS v2 (DEV ONLY)
+   Chargé uniquement dans dev.html
+   À intégrer dans style.css lors du déploiement final
+   ============================================================ */
+
+/* Réinitialise les styles v1 de la section paddledog */
+.section-paddledog {
+  padding: var(--sp-16) 0 var(--sp-24);
+}
+
+.section-paddledog::before {
+  background:
+    radial-gradient(ellipse at 75% 25%, rgba(196,149,106,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(45,90,39,0.10) 0%, transparent 55%);
+}
+
+/* Supprime le layout grille v1 (paddledog-inner n'est plus utilisé en v2) */
+.paddledog-inner {
+  display: block;
+}
+
+/* ─── Hero ─────────────────────────────────────────────── */
+.paddledog-hero {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto var(--sp-8);
+  padding-inline: var(--sp-6);
+}
+
+.paddledog-badges {
+  justify-content: center;
+}
+
+.paddledog-new {
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  padding: 5px 14px;
+}
+
+.paddledog-hero h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: var(--sp-8);
+}
+
+.paddledog-intro {
+  font-size: 1.0625rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.85;
+  max-width: 58ch;
+  margin: 0 auto var(--sp-8);
+}
+
+/* ─── Partenaire ────────────────────────────────────────── */
+.paddledog-partner {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.45);
+  max-width: none;
+  margin: 0 auto var(--sp-8);
+  padding-inline: var(--sp-6);
+  line-height: 1.6;
+}
+
+.paddledog-partner strong {
+  color: var(--c-sand);
+  font-weight: 700;
+}
+
+.cpd-partner-logo {
+  max-width: 120px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.cpd-partner-logo:not([src]),
+.cpd-partner-logo[src=""] {
+  display: none;
+}
+
+/* ─── Slider ────────────────────────────────────────────── */
+.paddledog-slider-wrap {
+  max-width: 520px;
+  margin: var(--sp-20) auto 0;
+  padding-inline: var(--sp-6);
+}
+
+/* Remplace .paddledog-slider v1 (480px fixe → 100%) */
+.paddledog-slider {
+  position: relative;
+  width: 100%;
+  flex-shrink: unset;
+}
+
+/* Aligne .paddledog-slides sur le comportement v1 (cover, 560px desktop) */
+.paddledog-slides {
+  height: 560px;
+}
+
+.paddledog-slide img {
+  object-fit: cover;
+}
+
+/* ─── Offres ────────────────────────────────────────────── */
+.paddledog-offers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-6);
+  max-width: 900px;
+  margin: 0 auto;
+  padding-inline: var(--sp-6);
+}
+
+/* ─── Cards ─────────────────────────────────────────────── */
+.cpd-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+@media (hover: hover) {
+  .cpd-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.18);
+  }
+}
+
+.cpd-card--balade    { border-top: 3px solid var(--c-sand); }
+.cpd-card--initiation { border-top: 3px solid #5aad52; }
+
+.cpd-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.cpd-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.cpd-badge--expert {
+  background: rgba(196,149,106,0.18);
+  color: var(--c-sand);
+  border: 1px solid rgba(196,149,106,0.28);
+}
+
+.cpd-badge--beginner {
+  background: rgba(90,173,82,0.18);
+  color: #7ECF73;
+  border: 1px solid rgba(90,173,82,0.28);
+}
+
+.cpd-places {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.cpd-places-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-sand);
+  flex-shrink: 0;
+  animation: cpdPulse 2.2s ease-in-out infinite;
+}
+
+.cpd-card--initiation .cpd-places-dot { background: #7ECF73; }
+
+.cpd-places-num { font-weight: 700; color: #fff; }
+
+.cpd-places.is-complet .cpd-places-dot {
+  background: #e05a4e;
+  animation: none;
+}
+
+@keyframes cpdPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.75); }
+}
+
+.cpd-title {
+  font-family: var(--font-serif);
+  font-size: 1.4375rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+}
+
+.cpd-title em { color: var(--c-sand); font-style: italic; }
+.cpd-card--initiation .cpd-title em { color: #7ECF73; }
+
+.cpd-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  padding: var(--sp-3) 0;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.cpd-meta-group {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.cpd-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.cpd-meta-item svg { width: 13px; height: 13px; stroke: rgba(255,255,255,0.35); }
+
+.cpd-price {
+  font-family: var(--font-serif);
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--c-sand);
+  line-height: 1;
+}
+
+.cpd-card--initiation .cpd-price { color: #7ECF73; }
+
+.cpd-price sup { font-size: 0.55em; vertical-align: super; letter-spacing: 0; }
+
+.cpd-price small {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.35);
+  margin-left: 2px;
+}
+
+.cpd-desc {
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.58);
+  line-height: 1.75;
+}
+
+.cpd-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.cpd-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
+}
+
+.cpd-features svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--c-sand);
+  fill: none;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cpd-card--initiation .cpd-features svg { stroke: #7ECF73; }
+
+.cpd-who {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.6;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: var(--sp-3);
+  margin-top: auto;
+}
+
+.cpd-who strong { color: rgba(255,255,255,0.55); font-weight: 600; }
+
+.cpd-btn { width: 100%; justify-content: center; }
+
+.cpd-btn--green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: #2D5A27;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 0.8125rem 1.75rem;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+  cursor: pointer;
+}
+
+.cpd-btn--green:hover {
+  background: #3A7232;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(45,90,39,0.35);
+}
+
+.cpd-btn--green:active { transform: translateY(1px); }
+
+.cpd-btn:disabled,
+.cpd-btn--green:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ─── Modale ────────────────────────────────────────────── */
+.cpd-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-4);
+  overflow-y: auto;
+}
+
+.cpd-modal.is-open { display: flex; }
+
+.cpd-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1099;
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.cpd-backdrop.is-open { display: block; }
+
+.cpd-modal-inner {
+  background: #1e2a1a;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-8);
+  width: 100%;
+  max-width: 520px;
+  position: relative;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.65);
+  margin: auto;
+}
+
+.cpd-modal-close {
+  position: absolute;
+  top: var(--sp-4);
+  right: var(--sp-4);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.cpd-modal-close:hover { background: rgba(255,255,255,0.14); color: #fff; }
+.cpd-modal-close svg { width: 13px; height: 13px; }
+
+.cpd-modal-header { margin-bottom: var(--sp-6); }
+
+.cpd-modal-badge {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: rgba(196,149,106,0.18);
+  color: var(--c-sand);
+  border: 1px solid rgba(196,149,106,0.28);
+  margin-bottom: var(--sp-3);
+}
+
+.cpd-modal-badge.is-initiation {
+  background: rgba(90,173,82,0.18);
+  color: #7ECF73;
+  border-color: rgba(90,173,82,0.28);
+}
+
+.cpd-modal-inner h3 {
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: var(--sp-1);
+}
+
+.cpd-modal-subtitle { font-size: 0.875rem; color: rgba(255,255,255,0.4); }
+
+.cpd-form { display: flex; flex-direction: column; gap: var(--sp-4); }
+
+.cpd-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+}
+
+.cpd-field { display: flex; flex-direction: column; gap: var(--sp-2); }
+
+.cpd-field label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.01em;
+}
+
+.cpd-field label small {
+  font-weight: 400;
+  color: rgba(255,255,255,0.3);
+  font-size: 0.75rem;
+}
+
+.cpd-field input {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.cpd-field input::placeholder { color: rgba(255,255,255,0.22); }
+
+.cpd-field input:focus {
+  border-color: rgba(196,149,106,0.55);
+  box-shadow: 0 0 0 3px rgba(196,149,106,0.1);
+}
+
+.cpd-attestation {
+  padding: var(--sp-4);
+  background: rgba(196,149,106,0.07);
+  border: 1px solid rgba(196,149,106,0.2);
+  border-radius: var(--radius);
+}
+
+.cpd-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+}
+
+.cpd-checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.cpd-checkmark {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1.5px solid rgba(196,149,106,0.45);
+  background: rgba(255,255,255,0.04);
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cpd-checkbox-label input:checked + .cpd-checkmark {
+  background: var(--c-sand);
+  border-color: var(--c-sand);
+}
+
+.cpd-checkbox-label input:checked + .cpd-checkmark::after {
+  content: '';
+  display: block;
+  width: 9px;
+  height: 5px;
+  border-left: 1.8px solid #1A2116;
+  border-bottom: 1.8px solid #1A2116;
+  transform: rotate(-45deg) translateY(-2px);
+}
+
+.cpd-checkbox-label input:focus-visible + .cpd-checkmark {
+  outline: 2px solid var(--c-sand);
+  outline-offset: 2px;
+}
+
+.cpd-form-error {
+  font-size: 0.8125rem;
+  color: #e05a4e;
+  background: rgba(224,90,78,0.1);
+  border: 1px solid rgba(224,90,78,0.22);
+  border-radius: var(--radius);
+  padding: var(--sp-3) var(--sp-4);
+  line-height: 1.5;
+}
+
+.cpd-submit {
+  width: 100%;
+  justify-content: center;
+  gap: var(--sp-2);
+}
+
+.cpd-submit svg { width: 14px; height: 14px; }
+
+.cpd-submit:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.cpd-form-note {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.28);
+}
+
+.cpd-success { text-align: center; padding: var(--sp-10) var(--sp-6); }
+
+.cpd-success-icon {
+  width: 52px;
+  height: 52px;
+  stroke: #7ECF73;
+  margin: 0 auto var(--sp-5);
+}
+
+.cpd-success p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.7;
+  max-width: 36ch;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   RESPONSIVE — Overrides (remplacent les règles v1 de style.css)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .section-paddledog { padding: var(--sp-20) 0 var(--sp-16); }
+  .paddledog-arrow { width: 36px; height: 36px; }
+  .paddledog-arrow svg { width: 16px; height: 16px; }
+}
+
+@media (max-width: 768px) {
+  /* Annule les règles v1 qui ciblaient paddledog-inner/content/slider */
+  .paddledog-inner { display: block; }
+  .paddledog-content { min-width: unset; width: unset; }
+
+  /* Règles v2 */
+  .section-paddledog { padding: var(--sp-10) 0 var(--sp-16); }
+  .paddledog-hero { margin-bottom: var(--sp-10); }
+  .paddledog-hero h2 { font-size: 1.875rem; }
+  .paddledog-intro { max-width: 100%; }
+  .paddledog-slider-wrap { margin-top: var(--sp-12); }
+  .paddledog-slides { height: auto; aspect-ratio: 6/7; }
+  .paddledog-arrow { display: flex; width: 36px; height: 36px; }
+  .paddledog-arrow svg { width: 16px; height: 16px; }
+  .paddledog-offers { grid-template-columns: 1fr; max-width: 480px; }
+  .cpd-form-row { grid-template-columns: 1fr; }
+  .cpd-modal-inner { padding: var(--sp-6); }
+}
+
+@media (max-width: 480px) {
+  .paddledog-hero h2 { font-size: 1.625rem; }
+  .cpd-card { padding: var(--sp-6); }
+}
