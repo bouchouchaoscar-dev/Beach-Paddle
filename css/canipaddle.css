@@ -325,6 +325,7 @@
   white-space: nowrap;
   transition: background var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .cpd-btn--green:hover {
