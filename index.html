@@ -1043,6 +1043,64 @@
 
       </div>
 
+      <!-- BLOC 3b — Formulaire inline (remplace la modale) -->
+      <div class="cpd-inline-form" id="cpdInlineForm" hidden>
+        <div class="cpd-inline-form-inner">
+          <div class="cpd-inline-form-header">
+            <div>
+              <span class="cpd-modal-badge" id="cpdFormBadge">Balade Confirmés</span>
+              <h3 id="cpdFormTitle">Finaliser ma réservation</h3>
+              <p class="cpd-modal-subtitle" id="cpdFormSubtitle">10h30 · 1h30 · 50€ par binôme</p>
+            </div>
+            <button class="cpd-inline-close" id="cpdInlineClose" type="button" aria-label="Annuler la réservation">
+              Annuler
+            </button>
+          </div>
+          <form class="cpd-form" id="cpdForm" novalidate>
+            <div class="cpd-form-row">
+              <div class="cpd-field">
+                <label for="cpdPrenom">Prénom <span aria-hidden="true">*</span></label>
+                <input type="text" id="cpdPrenom" name="prenom" required aria-required="true" autocomplete="given-name" placeholder="Jean">
+              </div>
+              <div class="cpd-field">
+                <label for="cpdNom">Nom <span aria-hidden="true">*</span></label>
+                <input type="text" id="cpdNom" name="nom" required aria-required="true" autocomplete="family-name" placeholder="Dupont">
+              </div>
+            </div>
+            <div class="cpd-field">
+              <label for="cpdEmail">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="cpdEmail" name="email" required aria-required="true" autocomplete="email" placeholder="jean.dupont@email.com">
+            </div>
+            <div class="cpd-field">
+              <label for="cpdTel">Téléphone <span aria-hidden="true">*</span></label>
+              <input type="tel" id="cpdTel" name="telephone" required aria-required="true" autocomplete="tel" placeholder="06 12 34 56 78">
+            </div>
+            <div class="cpd-field">
+              <label for="cpdChien">Nom et race de votre chien <small>(optionnel)</small></label>
+              <input type="text" id="cpdChien" name="nom_chien" autocomplete="off" placeholder="Luna, Border Collie">
+            </div>
+            <div class="cpd-attestation" id="cpdAttestation" hidden>
+              <label class="cpd-checkbox-label">
+                <input type="checkbox" id="cpdCheckAttestation" name="attestation">
+                <span class="cpd-checkmark" aria-hidden="true"></span>
+                <span>J'atteste que mon chien a déjà pratiqué le canipaddle et qu'il est à l'aise sur une planche de paddle. Je comprends que cette balade est réservée aux binômes confirmés.</span>
+              </label>
+            </div>
+            <p class="cpd-form-error" id="cpdFormError" role="alert" hidden></p>
+            <button type="submit" class="btn btn-primary cpd-submit" id="cpdSubmit"
+              aria-label="Confirmer et accéder au paiement">
+              Confirmer et payer
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8 13,8"/><polyline points="9,4 13,8 9,12"/></svg>
+            </button>
+            <p class="cpd-form-note">Vous serez redirigé vers le paiement sécurisé pour confirmer votre inscription.</p>
+          </form>
+          <div class="cpd-success" id="cpdSuccess" hidden>
+            <svg class="cpd-success-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="20"/><polyline points="15,24 21,30 33,18"/></svg>
+            <p>Votre place est réservée ! Vous allez être redirigé vers le paiement pour confirmer définitivement votre inscription.</p>
+          </div>
+        </div>
+      </div>
+
       <!-- BLOC 4 — Slider photos -->
       <div class="paddledog-slider-wrap reveal reveal-delay-3">
         <div class="paddledog-slider" id="paddledogSlider">
@@ -2209,65 +2267,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Modale canipaddle — placée au niveau body pour éviter le clipping iOS (overflow:hidden sur section) -->
-  <div class="cpd-modal" id="cpdModal" role="dialog" aria-modal="true" aria-labelledby="cpdModalTitle">
-    <div class="cpd-modal-inner">
-      <button class="cpd-modal-close" id="cpdModalClose" aria-label="Fermer">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/>
-        </svg>
-      </button>
-      <div class="cpd-modal-header">
-        <span class="cpd-modal-badge" id="cpdModalBadge">Balade Confirmés</span>
-        <h3 id="cpdModalTitle">Finaliser ma réservation</h3>
-        <p class="cpd-modal-subtitle" id="cpdModalSubtitle">10h30 · 1h30 · 50€ par binôme</p>
-      </div>
-      <form class="cpd-form" id="cpdForm" novalidate>
-        <div class="cpd-form-row">
-          <div class="cpd-field">
-            <label for="cpdPrenom">Prénom <span aria-hidden="true">*</span></label>
-            <input type="text" id="cpdPrenom" name="prenom" required aria-required="true" autocomplete="given-name" placeholder="Jean">
-          </div>
-          <div class="cpd-field">
-            <label for="cpdNom">Nom <span aria-hidden="true">*</span></label>
-            <input type="text" id="cpdNom" name="nom" required aria-required="true" autocomplete="family-name" placeholder="Dupont">
-          </div>
-        </div>
-        <div class="cpd-field">
-          <label for="cpdEmail">Email <span aria-hidden="true">*</span></label>
-          <input type="email" id="cpdEmail" name="email" required aria-required="true" autocomplete="email" placeholder="jean.dupont@email.com">
-        </div>
-        <div class="cpd-field">
-          <label for="cpdTel">Téléphone <span aria-hidden="true">*</span></label>
-          <input type="tel" id="cpdTel" name="telephone" required aria-required="true" autocomplete="tel" placeholder="06 12 34 56 78">
-        </div>
-        <div class="cpd-field">
-          <label for="cpdChien">Nom et race de votre chien <small>(optionnel)</small></label>
-          <input type="text" id="cpdChien" name="nom_chien" autocomplete="off" placeholder="Luna, Border Collie">
-        </div>
-        <div class="cpd-attestation" id="cpdAttestation" hidden>
-          <label class="cpd-checkbox-label">
-            <input type="checkbox" id="cpdCheckAttestation" name="attestation">
-            <span class="cpd-checkmark" aria-hidden="true"></span>
-            <span>J'atteste que mon chien a déjà pratiqué le canipaddle et qu'il est à l'aise sur une planche de paddle. Je comprends que cette balade est réservée aux binômes confirmés.</span>
-          </label>
-        </div>
-        <p class="cpd-form-error" id="cpdFormError" role="alert" hidden></p>
-        <button type="submit" class="btn btn-primary cpd-submit" id="cpdSubmit"
-          aria-label="Confirmer et accéder au paiement">
-          Confirmer et payer
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3,8 13,8"/><polyline points="9,4 13,8 9,12"/></svg>
-        </button>
-        <p class="cpd-form-note">Vous serez redirigé vers le paiement sécurisé pour confirmer votre inscription.</p>
-      </form>
-      <div class="cpd-success" id="cpdSuccess" hidden>
-        <svg class="cpd-success-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="20"/><polyline points="15,24 21,30 33,18"/></svg>
-        <p>Votre place est réservée ! Vous allez être redirigé vers le paiement pour confirmer définitivement votre inscription.</p>
-      </div>
-    </div>
-  </div>
-  <div class="cpd-backdrop" id="cpdBackdrop"></div>
 
   <script src="js/main.js?v=6"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>

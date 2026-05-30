@@ -343,63 +343,45 @@
   pointer-events: none;
 }
 
-/* ─── Modale ────────────────────────────────────────────── */
-.cpd-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1100;
-  align-items: center;
-  justify-content: center;
-  padding: var(--sp-4);
-  overflow-y: auto;
+/* ─── Formulaire inline ──────────────────────────────────── */
+.cpd-inline-form {
+  margin: var(--sp-8) auto 0;
+  max-width: 760px;
+  padding-inline: var(--sp-6);
 }
 
-.cpd-modal.is-open { display: flex; }
-
-.cpd-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1099;
-  background: rgba(0,0,0,0.72);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
-
-.cpd-backdrop.is-open { display: block; }
-
-.cpd-modal-inner {
+.cpd-inline-form-inner {
   background: #1e2a1a;
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius-lg);
   padding: var(--sp-8);
-  width: 100%;
-  max-width: 520px;
-  position: relative;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.65);
-  margin: auto;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
 }
 
-.cpd-modal-close {
-  position: absolute;
-  top: var(--sp-4);
-  right: var(--sp-4);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.55);
+.cpd-inline-form-header {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, color 0.2s;
-  cursor: pointer;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-6);
 }
 
-.cpd-modal-close:hover { background: rgba(255,255,255,0.14); color: #fff; }
-.cpd-modal-close svg { width: 13px; height: 13px; }
+.cpd-inline-close {
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cpd-inline-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
 
 .cpd-modal-header { margin-bottom: var(--sp-6); }
 
@@ -611,7 +593,8 @@
   .paddledog-arrow svg { width: 16px; height: 16px; }
   .paddledog-offers { grid-template-columns: 1fr; max-width: 480px; }
   .cpd-form-row { grid-template-columns: 1fr; }
-  .cpd-modal-inner { padding: var(--sp-6); }
+  .cpd-inline-form { padding-inline: var(--sp-4); }
+  .cpd-inline-form-inner { padding: var(--sp-6); }
 }
 
 @media (max-width: 480px) {
