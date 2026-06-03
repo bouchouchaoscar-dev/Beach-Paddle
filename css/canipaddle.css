@@ -507,26 +507,26 @@
 
 .cpd-depart-info {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9375rem;
-  color: rgba(255,255,255,0.75);
-  background: rgba(196,149,106,0.08);
-  border: 1px solid rgba(196,149,106,0.2);
-  border-radius: 8px;
-  padding: 12px 14px;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--c-sand);
+  background: rgba(196,149,106,0.07);
+  border-radius: 0 8px 8px 0;
 }
 
-.cpd-depart-info svg {
-  width: 15px;
-  height: 15px;
-  flex-shrink: 0;
-  stroke: var(--c-sand);
+.cpd-depart-heure {
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--c-sand);
+  line-height: 1;
 }
 
-.cpd-depart-info strong {
-  color: #fff;
-  font-weight: 600;
+.cpd-depart-note {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.4;
 }
 
 .cpd-attestation {
