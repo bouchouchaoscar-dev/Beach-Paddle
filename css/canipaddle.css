@@ -346,15 +346,15 @@
 /* ─── Formulaire inline ──────────────────────────────────── */
 .cpd-inline-form {
   margin: var(--sp-8) auto 0;
-  max-width: 760px;
-  padding-inline: var(--sp-6);
+  max-width: 480px;
+  padding-inline: var(--sp-4);
 }
 
 .cpd-inline-form-inner {
   background: #1e2a1a;
   border: 1px solid rgba(255,255,255,0.12);
-  border-radius: var(--radius-lg);
-  padding: var(--sp-8);
+  border-radius: 12px;
+  padding: 24px;
   box-shadow: 0 8px 40px rgba(0,0,0,0.4);
 }
 
@@ -463,7 +463,7 @@
 
 .cpd-field select {
   font-family: var(--font-sans);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: #fff;
   background-color: rgba(255,255,255,0.06);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='4,6 8,10 12,6'/%3E%3C/svg%3E");
@@ -475,6 +475,7 @@
   padding: 0.75rem 2.5rem 0.75rem 1rem;
   outline: none;
   width: 100%;
+  min-height: 48px;
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
@@ -627,8 +628,8 @@
   .paddledog-arrow svg { width: 16px; height: 16px; }
   .paddledog-offers { grid-template-columns: 1fr; max-width: 480px; }
   .cpd-form-row { grid-template-columns: 1fr; }
-  .cpd-inline-form { padding-inline: var(--sp-4); }
-  .cpd-inline-form-inner { padding: var(--sp-6); }
+  .cpd-inline-form { padding-inline: 0; width: calc(100% - 32px); }
+  .cpd-inline-form-inner { padding: 16px; }
 }
 
 @media (max-width: 480px) {

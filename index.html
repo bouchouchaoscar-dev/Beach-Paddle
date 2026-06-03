@@ -1060,9 +1060,19 @@
           </div>
           <form class="cpd-form" id="cpdForm" novalidate>
             <div class="cpd-field" id="cpdCreneauGroup" hidden>
-              <label for="cpdSelectCreneau">Créneau de départ <span aria-hidden="true">*</span></label>
+              <label for="cpdSelectCreneau">Choisissez votre créneau de départ <span aria-hidden="true">*</span></label>
               <select id="cpdSelectCreneau" name="creneau">
                 <option value="">— Choisissez un créneau —</option>
+                <option value="12:30">12h30</option>
+                <option value="12:40">12h40</option>
+                <option value="12:50">12h50</option>
+                <option value="13:00">13h00</option>
+                <option value="13:10">13h10</option>
+                <option value="13:20">13h20</option>
+                <option value="13:30">13h30</option>
+                <option value="13:40">13h40</option>
+                <option value="13:50">13h50</option>
+                <option value="14:00">14h00</option>
               </select>
             </div>
             <div class="cpd-form-row">
@@ -2278,6 +2288,6 @@
 
   <script src="js/main.js?v=6"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="js/canipaddle.js?v=5"></script>
+  <script src="js/canipaddle.js?v=6"></script>
 </body>
 </html>

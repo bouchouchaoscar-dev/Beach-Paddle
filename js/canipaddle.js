@@ -33,6 +33,7 @@ var CPDCONFIG = {
     { display: '13h30', value: '13:30' },
     { display: '13h40', value: '13:40' },
     { display: '13h50', value: '13:50' },
+    { display: '14h00', value: '14:00' },
   ],
 };
 
