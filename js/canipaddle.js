@@ -233,10 +233,14 @@ var CPDCONFIG = {
       }
     }
 
-    if (departInfo)  departInfo.hidden  = !isBalade;
+    if (departInfo) {
+      departInfo.hidden       = !isBalade;
+      departInfo.style.display = isBalade ? '' : 'none';
+    }
 
     if (creneauGroup) {
-      creneauGroup.hidden = isBalade;
+      creneauGroup.hidden       = isBalade;
+      creneauGroup.style.display = isBalade ? 'none' : '';
       if (selectCreneau) {
         selectCreneau.required = !isBalade;
         selectCreneau.value    = '';
