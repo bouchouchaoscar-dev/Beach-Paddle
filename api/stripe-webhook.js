@@ -71,7 +71,34 @@ async function confirmBooking(email, serviceRoleKey) {
   }
 
   const rows = await res.json();
-  return rows.length; // nombre de lignes mises à jour
+  return rows.length;
+}
+
+// ── Passage confirmed → cancelled pour l'email donné (remboursement) ─────────
+async function cancelBooking(email, serviceRoleKey) {
+  const url = `${SUPABASE_URL}/rest/v1/canipaddle_bookings`
+    + `?email=eq.${encodeURIComponent(email.toLowerCase())}`
+    + `&statut=eq.confirmed`
+    + `&session_date=eq.${SESSION_DATE}`;
+
+  const res = await fetch(url, {
+    method: 'PATCH',
+    headers: {
+      'apikey':        serviceRoleKey,
+      'Authorization': `Bearer ${serviceRoleKey}`,
+      'Content-Type':  'application/json',
+      'Prefer':        'return=representation',
+    },
+    body: JSON.stringify({ statut: 'cancelled' }),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Supabase PATCH failed: ${res.status} ${err}`);
+  }
+
+  const rows = await res.json();
+  return rows.length;
 }
 
 // ── Suppression des pending expirés (> 30 min) ───────────────────────────────
@@ -132,28 +159,54 @@ async function handler(req, res) {
     console.error('[Webhook] Cleanup error:', e.message)
   );
 
-  // 5. Traiter checkout.session.completed
-  if (event.type === 'checkout.session.completed') {
-    const session = event.data.object;
+  // 5. Router selon le type d'événement
+  switch (event.type) {
 
-    if (session.payment_status !== 'paid') {
-      return res.status(200).json({ received: true, skipped: 'payment not completed' });
+    case 'checkout.session.completed': {
+      const session = event.data.object;
+
+      if (session.payment_status !== 'paid') {
+        return res.status(200).json({ received: true, skipped: 'payment not completed' });
+      }
+
+      const email = session.customer_details?.email || session.customer_email;
+
+      if (!email) {
+        console.warn('[Webhook] Aucun email dans la session Stripe:', session.id);
+        return res.status(200).json({ received: true, warning: 'no email found' });
+      }
+
+      try {
+        const updated = await confirmBooking(email, serviceRoleKey);
+        console.log(`[Webhook] ✓ ${updated} réservation(s) confirmée(s) pour ${email}`);
+      } catch (err) {
+        console.error('[Webhook] Erreur confirmation:', err.message);
+        return res.status(500).json({ error: 'Erreur mise à jour Supabase' });
+      }
+      break;
     }
 
-    const email = session.customer_details?.email || session.customer_email;
+    case 'charge.refunded': {
+      const charge = event.data.object;
+      const email  = charge.billing_details?.email;
 
-    if (!email) {
-      console.warn('[Webhook] Aucun email dans la session Stripe:', session.id);
-      return res.status(200).json({ received: true, warning: 'no email found' });
+      if (!email) {
+        console.warn('[Webhook] Aucun email dans le charge remboursé:', charge.id);
+        return res.status(200).json({ received: true, warning: 'no email found' });
+      }
+
+      try {
+        const cancelled = await cancelBooking(email, serviceRoleKey);
+        console.log(`[Webhook] ✓ ${cancelled} réservation(s) annulée(s) pour ${email}`);
+      } catch (err) {
+        console.error('[Webhook] Erreur annulation:', err.message);
+        return res.status(500).json({ error: 'Erreur mise à jour Supabase' });
+      }
+      break;
     }
 
-    try {
-      const updated = await confirmBooking(email, serviceRoleKey);
-      console.log(`[Webhook] ✓ ${updated} réservation(s) confirmée(s) pour ${email}`);
-    } catch (err) {
-      console.error('[Webhook] Erreur confirmation:', err.message);
-      return res.status(500).json({ error: 'Erreur mise à jour Supabase' });
-    }
+    default:
+      break;
   }
 
   return res.status(200).json({ received: true });
