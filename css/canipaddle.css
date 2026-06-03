@@ -54,6 +54,45 @@
   margin: 0 auto var(--sp-8);
 }
 
+/* ─── Titre événement ──────────────────────────────────── */
+.cpd-event-title {
+  text-align: center;
+  margin: 0 auto var(--sp-10);
+  padding-inline: var(--sp-6);
+}
+
+.cpd-event-heading {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: var(--sp-2);
+}
+
+.cpd-event-date {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  color: #C87A38;
+  color: var(--c-sand);
+  line-height: 1.1;
+  margin: 0 0 var(--sp-4);
+}
+
+.cpd-event-date::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: #C87A38;
+  background: var(--c-sand);
+  border-radius: 2px;
+  margin: var(--sp-4) auto 0;
+  opacity: 0.6;
+}
+
 /* ─── Partenaire ────────────────────────────────────────── */
 .paddledog-partner {
   text-align: center;
