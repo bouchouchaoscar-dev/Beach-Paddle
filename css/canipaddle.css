@@ -505,6 +505,30 @@
   color: rgba(255,255,255,0.3);
 }
 
+.cpd-depart-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.75);
+  background: rgba(196,149,106,0.08);
+  border: 1px solid rgba(196,149,106,0.2);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.cpd-depart-info svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  stroke: var(--c-sand);
+}
+
+.cpd-depart-info strong {
+  color: #fff;
+  font-weight: 600;
+}
+
 .cpd-attestation {
   padding: var(--sp-4);
   background: rgba(196,149,106,0.07);

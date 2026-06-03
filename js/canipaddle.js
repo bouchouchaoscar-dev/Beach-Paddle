@@ -70,6 +70,7 @@ var CPDCONFIG = {
   var checkAttest        = document.getElementById('cpdCheckAttestation');
   var creneauGroup       = document.getElementById('cpdCreneauGroup');
   var selectCreneau      = document.getElementById('cpdSelectCreneau');
+  var departInfo         = document.getElementById('cpdDepartInfo');
   var submitBtn          = document.getElementById('cpdSubmit');
   var formError          = document.getElementById('cpdFormError');
   var successDiv         = document.getElementById('cpdSuccess');
@@ -231,6 +232,8 @@ var CPDCONFIG = {
         checkAttest.checked  = false;
       }
     }
+
+    if (departInfo)  departInfo.hidden  = !isBalade;
 
     if (creneauGroup) {
       creneauGroup.hidden = isBalade;
