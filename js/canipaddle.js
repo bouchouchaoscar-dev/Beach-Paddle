@@ -135,7 +135,7 @@ var CPDCONFIG = {
     if (formBadge)    formBadge.textContent    = isBalade ? 'Balade Confirmés' : 'Initiation Débutants';
     if (formBadge)    formBadge.classList.toggle('is-initiation', !isBalade);
     if (formTitle)    formTitle.textContent    = isBalade ? 'Finaliser ma réservation' : 'Finaliser mon inscription';
-    if (formSubtitle) formSubtitle.textContent = isBalade ? '10h30 · 1h30 · 50€ par binôme' : '12h30 · 1h30 · 35€ par binôme';
+    if (formSubtitle) formSubtitle.textContent = isBalade ? '10h30 - 12h00 · 50€ par binôme' : '12h30 - 14h00 · 35€ par binôme';
 
     if (attestationDiv) {
       attestationDiv.hidden = !isBalade;
