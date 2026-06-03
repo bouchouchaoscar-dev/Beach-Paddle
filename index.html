@@ -998,7 +998,7 @@
           <button class="cpd-btn cpd-btn--green" id="cpdBtnInitiation" data-session="initiation"
             onclick="alert('ok initiation')"
             aria-label="Réserver l'Initiation Canipaddle Débutants, 35€ par binôme">
-            Réserver · 35€
+            Réserver mon créneau · 35€
           </button>
         </article>
 
@@ -1059,6 +1059,12 @@
             </button>
           </div>
           <form class="cpd-form" id="cpdForm" novalidate>
+            <div class="cpd-field" id="cpdCreneauGroup" hidden>
+              <label for="cpdSelectCreneau">Créneau de départ <span aria-hidden="true">*</span></label>
+              <select id="cpdSelectCreneau" name="creneau">
+                <option value="">— Choisissez un créneau —</option>
+              </select>
+            </div>
             <div class="cpd-form-row">
               <div class="cpd-field">
                 <label for="cpdPrenom">Prénom <span aria-hidden="true">*</span></label>
@@ -2272,6 +2278,6 @@
 
   <script src="js/main.js?v=6"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="js/canipaddle.js?v=4"></script>
+  <script src="js/canipaddle.js?v=5"></script>
 </body>
 </html>
