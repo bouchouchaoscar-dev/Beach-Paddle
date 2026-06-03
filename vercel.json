@@ -1,5 +1,11 @@
 {
   "cleanUrls": true,
+  "crons": [
+    {
+      "path": "/api/cleanup-pending",
+      "schedule": "0 2 * * *"
+    }
+  ],
   "redirects": [
     {
       "source": "/reservations-beach-paddle-paris-marne-region-parisienne",
@@ -42,7 +48,7 @@
         { "key": "Permissions-Policy",       "value": "camera=(), microphone=(), geolocation=()" },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://img.youtube.com https://maps.gstatic.com https://maps.googleapis.com https://www.google.com; frame-src https://www.google.com https://maps.google.com https://www.youtube-nocookie.com; img-src 'self' data: https://img.youtube.com https://maps.gstatic.com https://maps.googleapis.com https://www.google.com https://maps.google.com; connect-src 'self' https://api.web3forms.com https://maps.googleapis.com"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://img.youtube.com https://maps.gstatic.com https://maps.googleapis.com https://www.google.com https://maps.google.com; frame-src https://www.google.com https://maps.google.com https://www.youtube-nocookie.com; connect-src 'self' https://api.web3forms.com https://maps.googleapis.com https://icvjwdtdbbyzkuczxvzp.supabase.co wss://icvjwdtdbbyzkuczxvzp.supabase.co"
         }
       ]
     },
