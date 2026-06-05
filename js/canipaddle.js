@@ -20,7 +20,7 @@ var CPDCONFIG = {
   SUPABASE_ANON_KEY:         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imljdmp3ZHRkYmJ5emt1Y3p4dnpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk0ODE1NzEsImV4cCI6MjA5NTA1NzU3MX0.z6ogY8h0Fco5vzKWRBkXEl-PtiZckuYai2HjLoL1Egw',
   PAYMENT_LINK_BALADE:       'https://buy.stripe.com/eVq00l1uS4uu5NmcfQ6sw01',
   PAYMENT_LINK_INITIATION:   'https://buy.stripe.com/9B68wR3D00eegs0fs26sw00',
-  SESSION_DATE:              '2026-06-06',
+  SESSION_DATE:              '2026-06-13',
   MAX_PLACES_BALADE:         5,
   MAX_PLACES_INITIATION:     9,
   CRENEAUX_INITIATION: [
