@@ -16,7 +16,7 @@ const crypto = require('crypto');
 
 // ── Config ───────────────────────────────────────────────────────────────────
 const SUPABASE_URL      = 'https://icvjwdtdbbyzkuczxvzp.supabase.co';
-const SESSION_DATE      = '2026-06-13';
+const SESSION_DATE      = '2026-06-20';
 const PENDING_TTL_MS    = 30 * 60 * 1000; // 30 minutes
 
 // ── Body brut requis pour la vérification de la signature Stripe ─────────────
