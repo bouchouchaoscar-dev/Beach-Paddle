@@ -5,9 +5,11 @@
  * Variables d'environnement Vercel requises :
  *   STRIPE_WEBHOOK_SECRET     → whsec_... (depuis Stripe Dashboard > Webhooks)
  *   SUPABASE_SERVICE_ROLE_KEY → service role key Supabase
+ *   RESEND_API_KEY            → re_... (depuis resend.com > API Keys)
  *
  * Événements Stripe à activer :
  *   checkout.session.completed
+ *   charge.refunded
  */
 
 'use strict';
@@ -18,6 +20,17 @@ const crypto = require('crypto');
 const SUPABASE_URL      = 'https://icvjwdtdbbyzkuczxvzp.supabase.co';
 const SESSION_DATE      = '2026-06-20';
 const PENDING_TTL_MS    = 30 * 60 * 1000; // 30 minutes
+const NOTIF_EMAIL       = 'contact@beachpaddle.fr';
+
+// ── Formatage date session en français ───────────────────────────────────────
+function formatSessionDateFr(isoDate) {
+  const [y, m, d] = isoDate.split('-').map(Number);
+  const date  = new Date(y, m - 1, d);
+  const jours = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+  const mois  = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+                 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+  return `${jours[date.getDay()]} ${d} ${mois[m - 1]} ${y}`;
+}
 
 // ── Body brut requis pour la vérification de la signature Stripe ─────────────
 async function getRawBody(req) {
@@ -71,7 +84,7 @@ async function confirmBooking(email, serviceRoleKey) {
   }
 
   const rows = await res.json();
-  return rows.length;
+  return rows; // tableau des lignes confirmées
 }
 
 // ── Passage confirmed → cancelled pour l'email donné (remboursement) ─────────
@@ -118,6 +131,61 @@ async function cleanupExpiredPending(serviceRoleKey) {
   });
 }
 
+// ── Envoi email de notification via Resend ───────────────────────────────────
+async function sendNotificationEmail(booking, resendKey) {
+  const isInitiation = booking.session_type === 'initiation';
+  const format       = isInitiation ? 'Initiation Débutants' : 'Balade Confirmés';
+  const dateFr       = formatSessionDateFr(SESSION_DATE);
+
+  // Formater le créneau : "12:30:00" → "12h30"
+  const creneauLine = isInitiation && booking.creneau
+    ? `Créneau : ${booking.creneau.slice(0, 5).replace(':', 'h')}\n`
+    : '';
+
+  const chienLine = booking.nom_chien
+    ? `Chien : ${booking.nom_chien}\n`
+    : '';
+
+  const subject = `Nouvelle réservation Canipaddle — ${booking.prenom} ${booking.nom}`;
+
+  const body = [
+    'Nouvelle réservation confirmée !\n',
+    `Format : ${format}`,
+    `Date : ${dateFr}`,
+    creneauLine.trimEnd(),
+    '',
+    `Nom : ${booking.prenom} ${booking.nom}`,
+    `Email : ${booking.email}`,
+    `Téléphone : ${booking.telephone}`,
+    chienLine.trimEnd(),
+    '',
+    'Paiement confirmé via Stripe.',
+  ].filter(line => line !== null && line !== undefined && !(line === '' && false))
+   .join('\n')
+   .replace(/\n{3,}/g, '\n\n');
+
+  const emailRes = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${resendKey}`,
+      'Content-Type':  'application/json',
+    },
+    body: JSON.stringify({
+      from:    'Canipaddle <noreply@beachpaddle.fr>',
+      to:      [NOTIF_EMAIL],
+      subject,
+      text:    body,
+    }),
+  });
+
+  if (!emailRes.ok) {
+    const err = await emailRes.text();
+    throw new Error(`Resend error ${emailRes.status}: ${err}`);
+  }
+
+  return await emailRes.json();
+}
+
 // ── Handler principal ─────────────────────────────────────────────────────────
 async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -126,6 +194,7 @@ async function handler(req, res) {
 
   const serviceRoleKey  = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const webhookSecret   = process.env.STRIPE_WEBHOOK_SECRET;
+  const resendKey       = process.env.RESEND_API_KEY;
 
   if (!serviceRoleKey || !webhookSecret) {
     console.error('[Webhook] Variables d\'environnement manquantes');
@@ -176,13 +245,22 @@ async function handler(req, res) {
         return res.status(200).json({ received: true, warning: 'no email found' });
       }
 
+      let confirmedRows;
       try {
-        const updated = await confirmBooking(email, serviceRoleKey);
-        console.log(`[Webhook] ✓ ${updated} réservation(s) confirmée(s) pour ${email}`);
+        confirmedRows = await confirmBooking(email, serviceRoleKey);
+        console.log(`[Webhook] ✓ ${confirmedRows.length} réservation(s) confirmée(s) pour ${email}`);
       } catch (err) {
         console.error('[Webhook] Erreur confirmation:', err.message);
         return res.status(500).json({ error: 'Erreur mise à jour Supabase' });
       }
+
+      // Email de notification (fire-and-forget — n'affecte pas la réponse Stripe)
+      if (resendKey && confirmedRows.length > 0) {
+        sendNotificationEmail(confirmedRows[0], resendKey).catch(e =>
+          console.error('[Webhook] Email notification failed:', e.message)
+        );
+      }
+
       break;
     }
 
